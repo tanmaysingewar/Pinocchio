@@ -1,0 +1,162 @@
+{
+  "tools": [
+    {
+      "name": "Read",
+      "enabled": true,
+      "description": "Read a UTF-8 file from the project workspace.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "file_path": {
+            "type": "string",
+            "description": "Path to the file relative to the project root."
+          }
+        },
+        "required": ["file_path"]
+      },
+      "source": "./read.ts"
+    },
+    {
+      "name": "Write",
+      "enabled": true,
+      "description": "Create or overwrite a UTF-8 file in the project workspace.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "file_path": {
+            "type": "string",
+            "description": "Path to the file relative to the project root."
+          },
+          "content": {
+            "type": "string",
+            "description": "Full file content to write."
+          }
+        },
+        "required": ["file_path", "content"]
+      },
+      "source": "./write.ts"
+    },
+    {
+      "name": "Edit",
+      "enabled": true,
+      "description": "Replace exact text in a UTF-8 file within the project workspace.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "file_path": {
+            "type": "string",
+            "description": "Path to the file relative to the project root."
+          },
+          "old_text": {
+            "type": "string",
+            "description": "Exact text to replace."
+          },
+          "new_text": {
+            "type": "string",
+            "description": "Replacement text."
+          }
+        },
+        "required": ["file_path", "old_text", "new_text"]
+      },
+      "source": "./edit.ts"
+    },
+    {
+      "name": "Bash",
+      "enabled": true,
+      "description": "Run a shell command from the project root and capture stdout and stderr. Provide the raw command only; do not wrap it in timeout or bash -lc because the runtime already does that.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "command": {
+            "type": "string",
+            "description": "Raw shell command to execute. Do not prefix it with timeout, sh -c, or bash -lc."
+          }
+        },
+        "required": ["command"]
+      },
+      "source": "./bash.ts",
+      "timeout_ms": 180000
+    },
+    {
+      "name": "TodoWrite",
+      "enabled": true,
+      "description": "Store a structured todo list snapshot for the current workspace run.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "todos": {
+            "type": "array",
+            "description": "Array of todo items to persist.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "description": "Short task description."
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Todo status such as pending, in_progress, or completed."
+                },
+                "priority": {
+                  "type": "string",
+                  "description": "Optional priority label."
+                }
+              },
+              "required": ["content", "status"]
+            }
+          }
+        },
+        "required": ["todos"]
+      },
+      "source": "./todo-write.ts"
+    },
+    {
+      "name": "AskUserQuestion",
+      "enabled": true,
+      "description": "Capture a concise question that should be surfaced back to the user.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string",
+            "description": "The question to ask the user."
+          },
+          "context": {
+            "type": "string",
+            "description": "Optional short context for why the question matters."
+          },
+          "options": {
+            "type": "array",
+            "description": "Optional suggested answers.",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": ["question"]
+      },
+      "source": "./ask-user-question.ts"
+    },
+    {
+      "name": "Agent",
+      "enabled": true,
+      "description": "Read a project subagent definition and package a delegation request.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "agent_name": {
+            "type": "string",
+            "description": "Name of the subagent defined under .pinocchio/agents."
+          },
+          "task": {
+            "type": "string",
+            "description": "Work to delegate to that subagent."
+          }
+        },
+        "required": ["agent_name", "task"]
+      },
+      "source": "./agent.ts"
+    }
+  ]
+}

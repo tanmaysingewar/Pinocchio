@@ -1,0 +1,22 @@
+{
+  "name": "pino",
+  "module": "index.ts",
+  "exports": {
+    ".": "../Pinocchio-Agent/index.ts"
+  },
+  "types": "../Pinocchio-Agent/index.ts",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "pino": "./index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2"
+  }
+}

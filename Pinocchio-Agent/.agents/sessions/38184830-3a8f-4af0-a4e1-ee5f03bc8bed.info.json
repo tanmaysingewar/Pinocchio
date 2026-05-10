@@ -1,0 +1,10 @@
+{
+  "sessionId": "38184830-3a8f-4af0-a4e1-ee5f03bc8bed",
+  "cwd": "/Users/tanmaysingewar/Desktop/Tiniy Agents/pinocchio",
+  "createdAt": 1775759842757,
+  "updatedAt": 1775759854212,
+  "messageCount": 380,
+  "title": "Session 38184830",
+  "gitBranch": "main",
+  "firstPrompt": "Whats in current directory exclude the node_modules folder"
+}

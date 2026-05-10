@@ -1,0 +1,22 @@
+{
+  "name": "pinocchio",
+  "version": "0.1.0",
+  "module": "index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "types": "./index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "bun test/index.ts"
+  },
+  "dependencies": {
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

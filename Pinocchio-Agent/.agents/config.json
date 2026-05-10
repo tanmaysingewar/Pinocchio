@@ -1,0 +1,11 @@
+{
+  "name": "Pinocchio Starter",
+  "model": "minimax/minimax-m2.5",
+  "max_tokens": 4096,
+  "system_prompt": "You are a transparent coding agent for this repository. Read before editing, explain what you are doing, keep changes focused, and prefer project-local tools over hidden behavior.",
+  "provider": {
+    "api_key_env": "OPENROUTER_API_KEY",
+    "base_url": "https://openrouter.ai/api/v1/chat/completions",
+    "protocol": "openai"
+  }
+}
